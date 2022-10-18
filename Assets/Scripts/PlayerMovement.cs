@@ -10,6 +10,8 @@ public class PlayerMovement : MonoBehaviour
 
     public bool isJumping;
 
+    public GameObject startPoint;
+
     private Rigidbody2D rb;
     // Start is called before the first frame update
     void Start()
@@ -28,6 +30,10 @@ public class PlayerMovement : MonoBehaviour
 
         if(Input.GetButtonDown("Jump") && isJumping == false) {
             rb.AddForce(new Vector2(rb.velocity.x, jump));
+        }
+
+        if(gameObject.transform.position.y <= -5.0) {
+            gameObject.transform.position = startPoint.transform.position;
         }
     }
 
